@@ -6,26 +6,21 @@ public class App
 {
     public static void main( String[] args )
     {
-        
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Chiken:");
-        String chiken = scanner.nextLine();
-        System.out.println("Bacon:");
-        String bacon = scanner.nextLine();
-        System.out.println("Tractor:");
-        String tractor = scanner.nextLine();
+        System.out.println("Ievadi savu vardu:");
 
-        System.out.println("Chicken:");
-        System.out.println( chiken);
-        System.out.println("Bacon:");
-        System.out.println(bacon);
-        System.out.println("Tractor:");
-        System.out.println(tractor);
-        System.out.println("And finally, a summary:" );
-        System.out.println( chiken);
-        System.out.println(bacon);
-        System.out.println(tractor);
+        String name = scanner.nextLine();
+
+        System.out.println("Ievadi savu uzvardu:");
+        String lastname = scanner.nextLine();
+
+        System.out.println("Ievadi savu grupu:");
+        String group = scanner.nextLine();
+
+        System.out.println("Students: " + name + " " + lastname + ", group: " + group );
+
+
     }
 
 }
