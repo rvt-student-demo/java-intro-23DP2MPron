@@ -10,21 +10,27 @@ public class App
         Scanner scanner = new Scanner(System.in);
         
                     
-        System.out.println("Give a number:");
-        int number = Integer.valueOf(scanner.nextLine());
-        int fakt = 1;
-        for (int i = 1; i < number; i ++) {
-            fakt = fakt * (i + 1);
+        int chet = 0;
+        int sum = 0; 
+        while (true) {
+            System.out.println("Give a number:");
+            int number = Integer.valueOf(scanner.nextLine());
+            if (number == -1) {
+                System.out.println("Sum: " + sum);
+                System.out.println("Numbers: " + chet);
+                System.out.println("Average: " + (double) sum / chet);
+                break;
+            }
             
-        }
-        System.out.println(fakt);
-             
-            
-
+            else {
+                chet = chet + 1;
+                sum = sum + number; 
+                continue;
+            }
         
     }
 
-    
+}
 }
 
 
