@@ -12,9 +12,12 @@ public class App
                     
         System.out.println("Give a number:");
         int number = Integer.valueOf(scanner.nextLine());
-        for (int i = number; i < 101; i ++) {
-            System.out.println(i);
+        int fakt = 1;
+        for (int i = 1; i < number; i ++) {
+            fakt = fakt * (i + 1);
+            
         }
+        System.out.println(fakt);
              
             
 
