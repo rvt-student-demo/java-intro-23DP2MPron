@@ -1,20 +1,40 @@
 package lv.rvt;
-import java.rmi.server.SocketSecurityException;
 import java.util.*;
 public class App {
-    public class MainProgram {
+   
         public static void main(String[] args) {
-            PaymentCard card = new PaymentCard(10);
-            System.out.println(card);
+            
+            PaymentCard paulsCard = new PaymentCard(20);
+           
+            PaymentCard mattsCard = new PaymentCard(30);
     
-            card.addMoney(15);
-            System.out.println(card);
+            
+            paulsCard.eatHeartily();
+           
+            mattsCard.eatAffordably();
     
-            card.addMoney(10);
-            System.out.println(card);
+          
+            System.out.println("Paul's card: " + paulsCard);
+            System.out.println("Matt's card: " + mattsCard);
     
-            card.addMoney(200);
-            System.out.println(card);
+           
+            paulsCard.lataaRahaa(20);
+            
+            mattsCard.eatHeartily();
+    
+           
+            System.out.println("Paul's card: " + paulsCard);
+            System.out.println("Matt's card: " + mattsCard);
+    
+            
+            paulsCard.eatAffordably();
+            paulsCard.eatAffordably();
+    
+            
+            mattsCard.lataaRahaa(50);
+    
+           
+            System.out.println("Paul's card: " + paulsCard);
+            System.out.println("Matt's card: " + mattsCard);
         }
     }
-}
