@@ -30,6 +30,10 @@ public class Person {
         return weight;
     }
 
+    public void increaseWeight(int amount) {
+        this.weight += amount;
+    }
+    
     public String toString(){
         return name + ", " + age + ", " + weight + ", " + height;
     }

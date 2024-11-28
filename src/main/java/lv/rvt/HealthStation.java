@@ -5,4 +5,9 @@ public class HealthStation {
         int weight = person.getWeight();
         return weight;
     }
+    public void feed(Person person){
+        person.increaseWeight(1);
+        
+    }
+
 }
