@@ -48,6 +48,12 @@ public class PaymentTerminal {
         }
         return false; 
     }
+    
+
+    public void addMoneyToCard(PaymentCard card, double sum) {
+        card.addMoney(sum); 
+        this.money += sum; 
+    }
 
     public String toString() {
         return "money: " + money + ", number of sold affordable meals: " + affordableMeals + ", number of sold hearty meals: " + heartyMeals;
