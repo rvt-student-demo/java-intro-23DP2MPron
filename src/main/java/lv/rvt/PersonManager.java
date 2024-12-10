@@ -1,36 +1,36 @@
 package lv.rvt;
 
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class PersonManager {
+    private String csvFile;
 
-    public static ArrayList<Person> getPersonList() {
-        ArrayList<Person> personList = new ArrayList<>();
-        String filePath = "/workspaces/java-intro-23DP2MPron/data/persons.csv";
+    public PersonManager(String csvFile) {
+        this.csvFile = csvFile;
+    }
 
-        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+    public List<String> getAllPersons() {
+        List<String> persons = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
             String line;
             while ((line = br.readLine()) != null) {
-                String[] values = line.split(","); 
-                if (values.length >= 2) {
-                    String name = values[0].trim();
-                    int age = Integer.parseInt(values[1].trim());
-                    int height = Integer.parseInt(values[3].trim());
-                    int weight = Integer.parseInt(values[2].trim());
-                    Person person = new Person(name, age, weight, height);
-                    personList.add(person);
-                }
+                persons.add(line);
             }
         } catch (IOException e) {
-            System.err.println("Kļūda lasot failu: " + e.getMessage());
-        } catch (NumberFormatException e) {
-            System.err.println("Nepareizs vecuma formāts: " + e.getMessage());
+            System.out.println("Error reading file: " + e.getMessage());
         }
+        return persons;
+    }
 
-        return personList;
+    public void addPerson(String person) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(csvFile, true))) {
+            bw.write(person);
+            bw.newLine();
+        } catch (IOException e) {
+            System.out.println("Error writing to file: " + e.getMessage());
+        }
     }
 }
