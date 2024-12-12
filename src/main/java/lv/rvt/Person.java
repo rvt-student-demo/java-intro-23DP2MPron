@@ -3,23 +3,23 @@ package lv.rvt;
 
 public class Person {
     private String name;
-    private int age;
-    private int height; 
-    private int weight; 
+    private SimpleDate birthday;
+    private int height;
+    private int weight;
 
-    public Person(String name, int age, int height, int weight) {
+    public Person(String name, SimpleDate birthday, int height, int weight) {
         this.name = name;
-        this.age = age;
-        this.weight = weight;
+        this.birthday = birthday;
         this.height = height;
+        this.weight = weight;
     }
 
     public String getName() {
         return name;
     }
 
-    public int getAge() {
-        return this.age;
+    public SimpleDate getBirthday() {
+        return birthday;
     }
 
     public int getHeight() {
@@ -30,12 +30,26 @@ public class Person {
         return weight;
     }
 
-    public void increaseWeight(int amount) {
-        this.weight += amount;
-    }
-    
-    public String toString(){
-        return name + ", " + age + ", " + weight + ", " + height;
+    @Override
+    public boolean equals(Object compared) {
+        
+        if (this == compared) {
+            return true;
+        }
+
+        
+        if (!(compared instanceof Person)) {
+            return false;
+        }
+
+        
+        Person comparedPerson = (Person) compared;
+
+       
+        return this.name.equals(comparedPerson.name)
+                && this.birthday.equals(comparedPerson.birthday)
+                && this.height == comparedPerson.height
+                && this.weight == comparedPerson.weight;
     }
 }
 
