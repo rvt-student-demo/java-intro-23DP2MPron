@@ -3,53 +3,28 @@ package lv.rvt;
 
 public class Person {
     private String name;
-    private SimpleDate birthday;
-    private int height;
-    private int weight;
+    private String address;
 
-    public Person(String name, SimpleDate birthday, int height, int weight) {
+   
+    public Person(String name, String address) {
         this.name = name;
-        this.birthday = birthday;
-        this.height = height;
-        this.weight = weight;
+        this.address = address;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public SimpleDate getBirthday() {
-        return birthday;
-    }
-
-    public int getHeight() {
-        return height;
-    }
-
-    public int getWeight() {
-        return weight;
-    }
-
+   
     @Override
-    public boolean equals(Object compared) {
-        
-        if (this == compared) {
-            return true;
-        }
+    public String toString() {
+        return name + "\n  " + address;
+    }
 
-        
-        if (!(compared instanceof Person)) {
-            return false;
-        }
+    
+    public static void main(String[] args) {
+        Person ada = new Person("Ada Lovelace", "24 Maddox St. London W1S 2QN");
+        Person esko = new Person("Esko Ukkonen", "Mannerheimintie 15 00100 Helsinki");
 
-        
-        Person comparedPerson = (Person) compared;
-
-       
-        return this.name.equals(comparedPerson.name)
-                && this.birthday.equals(comparedPerson.birthday)
-                && this.height == comparedPerson.height
-                && this.weight == comparedPerson.weight;
+        System.out.println(ada);
+        System.out.println(esko);
     }
 }
+
 
