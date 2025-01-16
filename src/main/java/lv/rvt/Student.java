@@ -9,7 +9,7 @@ public class Student extends Person {
         this.credits = 0;
     }
 
-
+   
     public void study() {
         this.credits++;
     }
@@ -19,18 +19,9 @@ public class Student extends Person {
         return this.credits;
     }
 
-
     @Override
     public String toString() {
         return super.toString() + "\n  Study credits " + this.credits;
-    }
-
-  
-    public static void main(String[] args) {
-        Student ollie = new Student("Ollie", "6381 Hollywood Blvd. Los Angeles 90028");
-        System.out.println(ollie);
-        ollie.study();
-        System.out.println(ollie);
     }
 }
 
