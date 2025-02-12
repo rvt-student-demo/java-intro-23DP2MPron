@@ -1,57 +1,51 @@
 package lv.rvt;
 
-public class Box {
-    private double w;
-    private double h;
-    private double l;
-    
-    public Box ( double width, double height, double length ) {
-    this.w = width;
-    this.h = height;
-    this.l = length;
+import java.util.ArrayList;
+public class Box implements Packable {
+
+    private double maxCapacity;
+    private ArrayList<Packable> box;
+
+
+    public Box(double maxCapacity) {
+        this.maxCapacity = maxCapacity;
+        this.box = new ArrayList<>();
+
     }
-    public Box(double side){
-    this.w = side;
-    this.l = side;
-    this.h = side;
+
+    @Override
+    public double weight() {
+        double weight = 0;
+        if (box.size() > 0) {
+            for (Packable item : box) {
+                weight+= item.weight();
+            }
+        }
+
+        return weight;
     }
-    public Box (Box oldBox ) {
-    this.w = oldBox.w;
-    this.h = oldBox.h;
-    this.l = oldBox.l;
-    }
-    private double faceArea(){
-    return l * w;
-    }
-    private double topArea(){
-    return l * h;
-    }
-    private double sideArea(){
-    return w * h;
-    }
-    public double area() {
-    return 2 * faceArea() + 2 * topArea() + 2 * sideArea();
-    }
-    public double volume() {
-    return l * w * h;
-    }
-    public double length(){
-    return l;
-    }
-    public double width(){
-    return w;
-    }
-    public double height(){
-    return h;
+
+    public void add(Packable item) {
+        if (!isMaxReached(item)) {
+            box.add(item);
+            
+        }
     }
     
-    public Box biggerBox( Box oldBox )
-    {
-    return new Box( 1.25 * oldBox.width(), 1.25 * oldBox.height(), 1.25 * oldBox.length());
+    public Packable pick(int index){
+       return box.get(index);
     }
-    public boolean nests(Box insideBox){
-    return h > insideBox.height() &&
-    w > insideBox.width() &&
-    l > insideBox.length();
+
+    public boolean isMaxReached(Packable item) {
+        if (this.weight()+ item.weight() <= this.maxCapacity) {
+            return false;
+        }
+        return true;
     }
+
+    @Override
+    public String toString() {
+        return "Box: " + this.box.size() + " items, total weight " + this.weight() + " kg";
+    }
+
 }
