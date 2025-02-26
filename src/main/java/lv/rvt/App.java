@@ -3,19 +3,23 @@ package lv.rvt;
 public class App {
 
   public static void main(String[] args) {
-      Box box = new Box(10);
 
-      box.add(new Book("Fedor Dostojevski", "Crime and Punishment", 2));
-      box.add(new Book("Robert Martin", "Clean Code", 1));
-      box.add(new Book("Kent Beck", "Test Driven Development", 0.7));
-      box.add(new Box(20));
-      Box boxNew = (Box) box.pick(3);
-      boxNew.add(new Book("Ciao", "Ciao",20.0));
-      box.add(new CD("Pink Floyd", "Dark Side of the Moon", 1973));
-      box.add(new CD("Wigwam", "Nuclear Nightclub", 1975));
-      box.add(new CD("Rendezvous Park", "Closer to Being Here", 2012));
+    Money a = new Money(10, 0);
+Money b = new Money(3, 50);
 
-      System.out.println(box);
-  }
+Money c = a.minus(b);
+
+System.out.println(a);  // 10.00e
+System.out.println(b);  // 3.50e
+System.out.println(c);  // 6.50e
+
+c = c.minus(a);       // NB: a new Money object is created, and is placed "at the end of the strand connected to c"
+//  the old 6.5 euros at the end of the strand disappears and the Java garbage collector takes care of it
+
+
+System.out.println(a);  // 10.00e
+System.out.println(b);  // 3.50e
+System.out.println(c);  // 0.00e
+}
 
 }
